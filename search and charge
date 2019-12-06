@@ -1,0 +1,101 @@
+#include <SmartInventor.h>
+
+int speedPercent = 50;
+int backTime = 0;
+int turnTime = 0;
+
+#define trugPin 29
+#define echoPin 30
+
+void setup()
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+pinMode (11, INPUT);
+pinMode (12, INPUT);
+pinMode (13, INPUT);
+pinMode (14, INPUT);
+pinMode (15, INPUT);
+pinMode (16, INPUT);
+pinMode (17, INPUT);
+pinMode (18, INPUT);
+
+SmartInvetor.DCMotorUse();
+SmartInvetor.DCMove(forward, speedPercent);  
+  }
+
+  void loop()
+  {
+    int currentDistance = getPingDistance();
+    if(currentDistance<50)
+    SmartInventor.Buzz(200-currentDistance*25, 18)
+    
+    }
+
+backTime++;
+turnTime++;
+
+if(backTime >= 200) backTime = 100;
+if(turnTIme >=500) turnTime = 100;
+
+if(digitalRead(11)  == LOW||
+   digitalRead(12)  == LOW||
+   digitalRead(13)  == LOW)
+   
+{SmartInventor.DCMove(backward, speedPercent);
+ SmartInventor.Buzz(1160, 12);
+ delay(100 + backTime);
+ 
+ SmartInventor.DCMove(right, speedPercnet);
+ delay(100 + turnTime);
+ 
+ SmartInventor.DCMove(forward, speedPercent);
+}
+
+else if(digitalRead(17)  == LOW||
+        digitalRead(16)  == LOW||
+        digitalRead(18)  == LOW)
+
+{SmartInventor.DCMove(backward, speedPercent);
+ SmartInventor.Buzz(1160, 12);
+ delay(100 + backTime);
+ 
+ SmartInventor.DCMove(left, speedPercnet);
+ delay(100 + turnTime);
+ 
+ SmartInventor.DCMove(forward, speedPercent);
+ SmartInventor.Buzz(1900, 12);
+}
+
+if(digitalRead(11)  == HIGH &&
+   digitalRead(12)  == HIGH &&
+   digitalRead(13)  == HIGH &&
+   digitalRead(17)  == HIGH &&
+   digitalRead(16)  == HIGH &&
+   digitalRead(18)  == HIGH &&
+   currentDistance<6
+   )
+{
+ SmartInventor.DCMove(forward, 100);
+}
+
+
+}
+  int getPingDistance()
+  {
+    long duratio, distance;
+
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+
+    
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    
+    duration = pulseIn(echoPin, HIGH);
+
+    return distance = (duration/2) / 29.1;
+  }
+   
