@@ -1,0 +1,38 @@
+#include <FastGPIO.h>
+#include <L3G.h>
+#include <LSM303.h>
+#include <PololuBuzzer.h>
+#include <PololuHD44780.h>
+#include <Pushbutton.h>
+#include <QTRSensors.h>
+#include <USBPause.h>
+#include <Zumo32U4.h>
+#include <Zumo32U4Buttons.h>
+#include <Zumo32U4Buzzer.h>
+#include <Zumo32U4Encoders.h>
+#include <Zumo32U4IRPulses.h>
+#include <Zumo32U4LCD.h>
+#include <Zumo32U4LineSensors.h>
+#include <Zumo32U4Motors.h>
+#include <Zumo32U4ProximitySensors.h>
+
+int right motordirection = PB1;
+int left motordirection = PB2;
+int right motorspeed = PB5;
+int left motorspeed = PB6;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode (right motordirection, OUTPUT);
+  pinMode (left motordirection, OUTPUT);
+  pinMode (right motorspeed, OUTPUT);
+  pinMode (left motorspeed, OUTPUT);
+  digitalWrite(right motordirection, HIGH);
+  digitalWrite(left motordirection, LOW);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  analogWrite(right motorspeed, )
+}
